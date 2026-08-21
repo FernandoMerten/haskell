@@ -1,0 +1,14 @@
+{
+  "name": "Haskell",
+  "image": "mcr.microsoft.com/devcontainers/base:debian",
+  "features": {
+    "ghcr.io/devcontainers-extra/features/haskell:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "haskell.haskell"
+      ]
+    }
+  }
+}
