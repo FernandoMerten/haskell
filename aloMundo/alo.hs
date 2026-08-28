@@ -29,8 +29,8 @@ n = div a (length xs)
 -- utilizando funções já existentes na biblioteca padrão (head e reverse) é:
 
 
-last :: [a] -> a
-last xs = head (reverse xs)
+--last :: [a] -> a
+--last xs = head (reverse xs)
 
 -- 4. Outra definição para a função last
 -- Podemos definir last de outras maneiras, seja por 
@@ -45,15 +45,15 @@ last1 xs = xs !! (length xs - 1)
 
 last3 :: [a] -> a
 last3 [x]    = x
-last3 (_:xs) = last xs
+last3 (_:xs) = last3 xs
 
 -- 5. Duas formas diferentes de definir a função init
 -- A função init remove o último elemento de uma lista. Ela pode ser definida de várias maneiras, destacando-se estas duas:
 
 -- Primeira forma (invertendo a lista, removendo a cabeça com tail, e invertendo de volta):
 
-init :: [a] -> [a]
-init xs = reverse (tail (reverse xs))
+--init :: [a] -> [a]
+--init xs = reverse (tail (reverse xs))
 
 -- Segunda forma (pegando todos os elementos exceto o último usando take e length):
 
