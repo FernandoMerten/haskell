@@ -21,45 +21,6 @@ n = div a (length xs)
     a = 10
     xs = [1, 2, 3, 4, 5]
 
--- (Alternativamente, usando crases para o operador infixo: n = a div length xs, 
--- desde que length xs esteja devidamente isolado ou tratado).
-
--- 3. Primeira definição da função last
--- Uma forma comum de definir a função last (que retorna o último elemento de uma lista) 
--- utilizando funções já existentes na biblioteca padrão (head e reverse) é:
-
-
---last :: [a] -> a
---last xs = head (reverse xs)
-
--- 4. Outra definição para a função last
--- Podemos definir last de outras maneiras, seja por 
--- acesso direto via índice ou por recursão estrutural:
-
--- Utilizando índice e o tamanho da lista:
-
-last1 :: [a] -> a
-last1 xs = xs !! (length xs - 1)
-
--- Utilizando casamento de padrões e recursão:
-
-last3 :: [a] -> a
-last3 [x]    = x
-last3 (_:xs) = last3 xs
-
--- 5. Duas formas diferentes de definir a função init
--- A função init remove o último elemento de uma lista. Ela pode ser definida de várias maneiras, destacando-se estas duas:
-
--- Primeira forma (invertendo a lista, removendo a cabeça com tail, e invertendo de volta):
-
---init :: [a] -> [a]
---init xs = reverse (tail (reverse xs))
-
--- Segunda forma (pegando todos os elementos exceto o último usando take e length):
-
-init1 :: [a] -> [a]
-init1 xs = take (length xs - 1) xs
-
 ----------------------------------------------------------------------------------------------------------
 
 -- add :: (Int, Int) -> Int -- definição de uma função 
@@ -73,3 +34,26 @@ add3 (x, y) = x + y
 --Exec 3
 last2 ::  [Int] -> Int
 last2 xs = head (reverse xs)
+
+-------------------------------------------------------------------------------------------------
+--Exec 4
+-- Utilizando índice e o tamanho da lista:
+last5 :: [a] -> a
+last5 xs = xs !! (length xs - 1)
+
+-- Utilizando casamento de padrões e recursão:
+
+last6 :: [a] -> a
+last6 [x]    = x
+last6 (_:xs) = last6 xs
+
+-------------------------------------------------------------------------------------------------
+--Exercício 5
+--Defina a função init2 que recebe uma lista e retorna a lista sem o último elemento
+init2 :: [Int] -> [Int]
+-- tail -> retorna todos os elementos de uma lista, exceto o primeiro
+init2 xs = reverse(tail(reverse xs))
+
+init3:: [Int] -> [Int]
+init3 xs = take (length xs - 1) xs
+l = [1, 2, 3, 4, 5]
