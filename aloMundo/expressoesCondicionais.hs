@@ -1,0 +1,115 @@
+-- Expressoões Condicionais
+-- Em Haskell, as expressões condicionais são usadas para tomar decisões com base em condições
+-- A sintaxe básica de uma expressão condicional é a seguinte:
+-- if condição then expressão1 else expressão2
+-- A condição deve ser uma expressão que retorna um valor booleano (True ou False)
+-- Exemplo de função que verifica se um número é positivo, negativo ou zero:
+-- verificaNumero :: Int -> String
+-- verificaNumero x = if x > 0 then "Positivo" else if x <
+-- 0 then "Negativo" else "Zero"
+-- deve sempre usar else, pois avita problemas de ambiguidades, 
+-- caso a condição seja falsa, o else será executado.
+
+-- Equações Guardadas
+-- Em Haskell, as equações guardadas são uma forma de definir funções com base em
+-- diferentes condições. Elas permitem que você especifique várias condições e os resultados
+-- correspondentes para cada uma delas. A sintaxe básica de uma equação guardada é
+-- a seguinte:
+-- nomeDaFuncao argumentos
+--     | condição1 = resultado1
+--     | condição2 = resultado2
+--     | condição3 = resultado3
+--     | otherwise = resultadoPadrao
+-- A palavra-chave otherwise é usada como uma condição padrão que será executada se
+-- nenhuma das condições anteriores for verdadeira. Ela é equivalente a "True" e garante
+-- que sempre haverá um resultado para a função, mesmo que nenhuma das condições seja atendida.
+
+-- signum :: Int -> String
+-- signum x
+--     | x > 0     = "Positivo"
+--     | x < 0     = "Negativo"
+--     | otherwise = "Zero"
+
+-- Casamento de padrões
+-- Em Haskell, o casamento de padrões é uma técnica poderosa que permite definir funções
+-- com base na estrutura dos argumentos fornecidos. Ele permite que você "case" os
+-- argumentos de uma função com diferentes padrões e execute diferentes blocos de código
+-- com base nesses padrões. A sintaxe básica do casamento de padrões é a seguinte:
+-- nomeDaFuncao (padrão1) = resultado1
+-- nomeDaFuncao (padrão2) = resultado2
+-- nomeDaFuncao (padrão3) = resultado3
+-- O casamento de padrões é especialmente útil quando você deseja lidar com diferentes
+-- casos de entrada de forma concisa e legível. Ele permite que você defina funções
+-- de maneira declarativa, especificando como os argumentos devem ser estruturados para
+-- produzir resultados diferentes. Além disso, o casamento de padrões pode ser combinado
+-- com expressões condicionais e equações guardadas para criar funções mais complexas e
+-- expressivas.
+-- Exemplo de função Casamento de padrões:
+-- verificaNumero :: Int -> String
+-- verificaNumero 0 = "Zero"
+-- verificaNumero x
+--     | x > 0     = "Positivo"
+--     | otherwise = "Negativo"
+-- Significa que se o argumento for 0, a função retorna "Zero". Caso contrário, 
+-- se o argumento for maior que 0, a função retorna "Positivo". 
+-- Caso contrário, a função retorna "Negativo".
+
+-- (&&) é o operador lógico "E" em Haskell, 
+-- que retorna True se ambos os operandos forem True, caso contrário, retorna False.
+-- (||) é o operador lógico "OU" em Haskell,
+-- que retorna True se pelo menos um dos operandos for True, caso contrário, retorna False.
+-- Exemplo dos dois: 
+-- (&&) :: Bool -> Bool -> Bool
+-- True && True   -- Retorna True
+-- True && False  -- Retorna False
+-- False && True  -- Retorna False
+-- (||) :: Bool -> Bool -> Bool
+-- True || True   -- Retorna True
+-- True || False  -- Retorna True
+-- False || True  -- Retorna True
+-- not é o operador lógico "NÃO" em Haskell,
+-- que inverte o valor de um operando booleano.
+-- not :: Bool -> Bool
+-- not True  -- Retorna False
+-- not False -- Retorna True
+
+-- _ curinga significa que o valor do operando não importa,
+-- e o resultado da operação será determinado pelo outro operando.
+-- _ && _ = False
+-- isso significa que se qualquer um dos operandos for False, o resultado será False.
+-- _ && true = True
+-- isso significa que se o primeiro operando for True e o segundo for True, o resultado será True.
+
+-- Padrões sob listas é uma técnica que permite definir funções com base 
+-- na estrutura das listas fornecidas como argumentos.
+-- Ele permite que você "case" os elementos de uma lista com diferentes padrões 
+-- e execute diferentes
+-- [1, 2, 3, 4] -> (1:2:3:4:[]) -> (1:(2:(3:(4:[])))) -> 1:(2:(3:(4:[]))) -> 1:2:3:4:[]
+
+-- map é uma função de ordem superior em Haskell 
+-- que aplica uma função a cada elemento de uma lista,
+-- retornando uma nova lista com os resultados.
+-- A sintaxe básica do map é a seguinte:
+-- map função lista
+-- Exemplo de uso do map:
+-- map (+1) [1, 2, 3] -> [2, 3, 4]
+-- map (*2) [1, 2, 3]
+-- Exec:
+-- odds n = map f [0..n-1]
+          --where 
+            --f x = 2*x + 1
+-- isso significa que a função odds recebe um número n e 
+-- retorna uma lista contendo os n primeiros números ímpares.
+-- o map faz a função f ser aplicada a cada elemento da lista [0..n-1],
+-- que é gerada usando a notação de intervalo [0..n-1].
+-- e o where define a função f, que recebe um número x e retorna o valor 2*x + 1,
+-- que é a fórmula para calcular o n-ésimo número ímpar.
+
+-- para aidiconar um elemento dentro da lista, você pode usar o operador : (construtor de lista)
+-- Exemplo:
+-- 1 : [2, 3, 4] -> [1, 2, 3, 4]
+-- 5 : [] -> [5]
+-- addLista :: a -> [a] -> [a]
+-- addLista x xs = x : xs
+-- aqui mostra que a função addLista recebe um elemento x e uma lista xs,
+-- e retorna uma nova lista com x adicionado no início da lista xs.
