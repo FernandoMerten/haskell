@@ -1,15 +1,16 @@
--- head retorna só o primeiro elemento/take retorna os primeiros elementos
--- ++ concatena listas
+-- Definição da função principal msort
 msort :: Ord a => [a] -> [a]
-msort xs
-    | length(xs) <= 1 = xs
-    |otherwise = (take(length((xs)) `div` 2) xs)
-  --  | otherwise = (take(length(xs) `div` 2) xs)
-  --  where 
-     --   ordenar :: [a] -> [a]
-   --     ordenar ys = if x <= y then xs++ys else ys ++ ys++xs
+msort []  = []
+msort [x] = [x]
+msort xs  = merge (msort metade1) (msort metade2)
+  where
+    -- Divide a lista exatamente no meio
+    (metade1, metade2) = splitAt (length xs `div` 2) xs
 
-
-
--- | otherwise [msort(take(length((xs)) `div` 2)) ++  msort(tail(length((xs))`div` 2))]
--- ys : take(length((xs)) ´div´ 2) xs : tail(length((xs))´div´ 2)
+-- Função auxiliar para combinar (intercalar) duas listas já ordenadas
+merge :: Ord a => [a] -> [a] -> [a]
+merge [] ys = ys                        -- Se a primeira lista acabar, retorna a segunda
+merge xs [] = xs                        -- Se a segunda lista acabar, retorna a primeira
+merge (x:xs) (y:ys)
+  | x <= y    = x : merge xs (y:ys)     -- Se o elemento da esquerda for menor, ele vem primeiro
+  | otherwise = y : merge (x:xs) ys     -- Caso contrário, o da direita vem primeiro
