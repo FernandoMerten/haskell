@@ -20,6 +20,8 @@ bin2dec (x:xs)
 --com a situação, por exemplo, usando truncamento ou mensagem de erro. Por exemplo, 𝑑𝑒𝑐2𝑏𝑖𝑛 2 8 deve
 --retornar [False,False,False,False,False,False,True,False]. 𝑑𝑒𝑐2𝑏𝑖𝑛 ∷ 𝐼𝑛𝑡 → 𝐼𝑛𝑡 → [Bool]
 
+--REVISAR!!!
+
 dec2bin :: Int -> Int -> [Bool]
 dec2bin n bits
     |bits <= 0 =[]
@@ -79,6 +81,8 @@ dec2bincompl n bits
 --overflow durante a operação. A função deve retornar uma tupla no formato:
 --(resultado, overflow), onde: (i) resultado é o número binário resultante da soma; (ii) overflow é um valor
 --booleano que indica se houve estouro de capacidade. somarBin	::	[Bool]	->	[Bool]	->	Int	->	([Bool],Bool)
+
+--REVISAR!!!
 
 somarBin :: [Bool] -> [Bool] -> Int -> ([Bool], Bool)
 somarBin [] _ _ =([],False)     --Nesses 2 primeiros casos eu poderia colocar que ele retorna o número binário sem somar nada, mas se esse fosse o 
