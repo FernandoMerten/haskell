@@ -84,8 +84,8 @@ somarBin :: [Bool] -> [Bool] -> Int -> ([Bool], Bool)
 somarBin [] _ _ =([],False)     --Nesses 2 primeiros casos eu poderia colocar que ele retorna o número binário sem somar nada, mas se esse fosse o 
 somarBin _ [] _ =([],False)     --objetivo, então ao invés de uma lista vazia deveria se usar [False] que seria a representação de false.(Pelo menos na minha percepção)
 somarBin (x:xs) (y:ys) bits
-    |bits <= 0 = ([],False)
-    |bits == 1 = ([x /= y], x && y)
+    |bits <= 0 = ([],False)             --                 e vice versa
+    |bits == 1 = ([x /= y], x && y)     -- /= XOR se True =/ False == True, caso contrario False
     |otherwise = ((dec2bincompl ((bincompl2dec (x:xs)) + (bincompl2dec (y:ys))) bits), False)
 
 
